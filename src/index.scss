@@ -1,0 +1,37 @@
+// Load all fonts
+@font-face {
+  font-family: 'Neue-Montreal-Bold';
+  src: url('./fonts/Neue_Montreal/PPNeueMontreal-Bold.otf')
+}
+
+@font-face {
+  font-family: 'Neue-Montreal-Book';
+  src: url('./fonts/Neue_Montreal/PPNeueMontreal-Book.otf')
+}
+
+@font-face {
+  font-family: 'Neue-Montreal-Italic';
+  src: url('./fonts/Neue_Montreal/PPNeueMontreal-Italic.otf')
+}
+
+@font-face {
+  font-family: 'Neue-Montreal-Medium';
+  src: url('./fonts/Neue_Montreal/PPNeueMontreal-Medium.otf')
+}
+
+@font-face {
+  font-family: 'Neue-Montreal-SemiBold-Italic';
+  src: url('./fonts/Neue_Montreal/PPNeueMontreal-SemiBolditalic.otf')
+}
+
+@font-face {
+  font-family: 'Neue-Montreal-Thin';
+  src: url('./fonts/Neue_Montreal/PPNeueMontreal-Thin.otf')
+}
+
+// Reset CSS
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

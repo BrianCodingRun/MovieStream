@@ -1,0 +1,44 @@
+.resultSearch {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 1001;
+
+    .headerSearchResult {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        .headerSearchResultInfo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            .headerSearchResultTitle {
+                font-family: 'Neue-Montreal-Thin';
+                font-size: 1.2rem;
+                color: white;
+    
+                span {
+                    font-family: 'Neue-Montreal-Book';
+                    font-size: 1.2rem;
+                    letter-spacing: 0.02em;
+                    text-decoration: underline;
+                    color: #f0c14b;
+                }
+            }
+        }
+        .searchInput {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+    }
+}

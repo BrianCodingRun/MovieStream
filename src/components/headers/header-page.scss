@@ -1,0 +1,52 @@
+.pageHeader {
+    padding: 8rem 0 2rem;
+    position: relative;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 40vh;
+    text-align: center;
+
+    @media only screen and (max-width: 767px) {
+        padding: 4rem 2rem 2rem;
+        height: auto;
+        text-align: start;
+    }
+
+    h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #fafafa;
+        position: relative;
+        z-index: 1;
+
+        @media only screen and (max-width: 768px) {
+            font-size: 2rem;
+        }
+
+        span.keyword {
+            color: #f5c518;
+            text-transform: uppercase;
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.6);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        background-image: linear-gradient(to top, #000, rgba(15, 15, 15, 0));
+    }
+}

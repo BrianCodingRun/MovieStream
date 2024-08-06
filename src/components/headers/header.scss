@@ -1,0 +1,335 @@
+.homeHeader {
+    width: 100%;
+    height: 80dvh;
+    position: relative;
+
+    @media only screen and (max-width: 767px) {
+        height: 60dvh;
+    }
+    
+    .background {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+
+        // Overlay
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($color: #000000, $alpha: 0.6);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background-image: linear-gradient(to top, #000, rgba(26, 26, 26, 0));
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .homeHeaderContainer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        width: 90%;
+        margin: 0 auto;
+        height: 100%;
+
+        .homeHeaderContainerLeft {
+            flex: 1;
+
+            .addWatchList {
+                button {
+                    background-color: transparent;
+                    border: none;
+                    color: #e4e4e4;
+                    cursor: pointer;
+                    
+                    svg {
+                        font-size: 1.1rem;
+                    }
+                    
+                    span {
+                        font-family: 'Neue-Montreal-Book';
+                        letter-spacing: 0.02em;
+                        font-size: .9rem;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+
+        .homeHeaderContainerMiddle {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            flex: 1;
+            align-items: center;
+            align-self: center;
+
+            .homeHeaderContainerMiddleTitle {
+                h1 {
+                    font-size: 3.5rem;
+                    color: #fff;
+                    font-family: 'Neue-Montreal-Book';
+                    font-weight: 500;
+                    text-transform: capitalize;
+                    letter-spacing: 0.02em;
+                }
+            }
+
+            .homeHeaderContainerMiddleDetails {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                width: 100%;
+
+
+                .homeHeaderContainerMiddleDetailsLeft {
+                    .homeHeaderContainerMiddleDetailsRating {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+
+                        p {
+                            background-color: #fafafa;
+                            padding: 0.25rem .5rem;
+                            font-size: .9rem;
+                            font-family: 'Neue-Montreal-Bold';
+                            color: #151515;
+                            border-radius: 2px;
+                        }
+
+                        span {
+                            color: #fafafa;
+                            letter-spacing: 0.05em;
+                            font-family: 'Neue-Montreal-Book';
+                        }
+                    }
+                }
+
+                hr {
+                    border: none;
+                    display: inline-block;
+                    width: 0.05em;
+                    height: 15px;
+                    background-color: #fafafa;
+                }
+
+                .homeHeaderContainerMiddleDetailsRight {
+                    display: flex;
+                    align-items: center;
+                    gap: .5rem;
+
+                    span {
+                        font-size: 0.9rem;
+                        color: #fafafa;
+                        letter-spacing: 0.02em;
+                        font-family: 'Neue-Montreal-Book';
+                    }
+
+                    hr {
+                        border: none;
+                        display: inline-block;
+                        width: 0.1em;
+                        height: 0.1em;
+                        background-color: #fff;
+                    }
+                }
+            }
+
+            .callToAction {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                .viewDetails {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    margin: 1rem 0;
+
+                    a {
+                        display: inline-block;
+                        padding: 0.25rem 0.8rem;
+                        background-color: transparent;
+                        border: 1px solid #fafafa;
+                        border-radius: 0;
+                        font-size: 1rem;
+                        cursor: pointer;
+    
+                        span {
+                            font-size: 0.8rem;
+                            letter-spacing: 0.02em;
+                            font-family: 'Neue-Montreal-Book';
+                            color: #fafafa;
+                        }
+                    }
+                }
+
+                .watchTrailer {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    margin: 1rem 0;
+    
+                    button {
+                        border: none;
+                        border-radius: 0;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        padding: .8rem;
+    
+                        svg {
+                            font-size: 1.2rem;
+                        }
+    
+                        span {
+                            font-size: 0.8rem;
+                            letter-spacing: 0.02em;
+                            font-family: 'Neue-Montreal-Bold';
+                        }
+                    }
+                }
+            }
+        }
+
+        .homeHeaderContainerRight {
+            flex: 1;
+
+            .playPause {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                gap: 0.5rem;
+
+                button {
+                    border: none;
+                    border-radius: 0;
+                    font-size: 1rem;
+                    cursor: pointer;
+                    padding: .8rem;
+                    color: #fafafa;
+                    border-radius: 50%;
+
+                    svg {
+                        font-size: 1.2rem;
+                        fill: #0f0f0f;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .homeHeader {
+        .homeHeaderContainer {
+            .homeHeaderContainerLeft, .homeHeaderContainerRight {
+                display: none;
+            }
+
+            .homeHeaderContainerMiddle {
+                .homeHeaderContainerMiddleTitle {
+                    h1 {
+                        font-size: 2.5rem;
+                    }
+                }
+
+                .homeHeaderContainerMiddleDetails {
+                    .homeHeaderContainerMiddleDetailsLeft {
+                        .homeHeaderContainerMiddleDetailsRating {
+                            p {
+                                font-size: .7rem;
+                            }
+
+                            span {
+                                font-size: .8rem;
+                            }
+                        }
+                    }
+
+                    .homeHeaderContainerMiddleDetailsRight {
+                        display: flex;
+                        align-items: center;
+                        gap: .5rem;
+
+                        span {
+                            font-size: 0.8rem;
+                            color: #fafafa;
+                            letter-spacing: 0.02em;
+                            font-family: 'Neue-Montreal-Book';
+                        }
+
+                        hr {
+                            border: none;
+                            display: inline-block;
+                            width: 0.1em;
+                            height: 0.1em;
+                            background-color: #fff;
+                        }
+                    }
+                }
+
+                .callToAction {
+                    .viewDetails {
+                        a {
+                            display: inline-block;
+                            padding: 0.15rem 0.6rem;
+                            background-color: transparent;
+                            border: 1px solid #fafafa;
+                            border-radius: 0;
+                            font-size: .9rem;
+                            cursor: pointer;
+    
+                            span {
+                                font-size: 0.8rem;
+                                letter-spacing: 0.02em;
+                                font-family: 'Neue-Montreal-Book';
+                                color: #fafafa;
+                            }
+                        }
+                    }
+
+                    .watchTrailer {
+                        button {
+                            border: none;
+                            border-radius: 0;
+                            font-size: .9rem;
+                            cursor: pointer;
+                            padding: .8rem;
+    
+                            svg {
+                                font-size: 1rem;
+                            }
+    
+                            span {
+                                font-size: 0.8rem;
+                                letter-spacing: 0.02em;
+                                font-family: 'Neue-Montreal-Bold';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

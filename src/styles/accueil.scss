@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Georama:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*, ::after, ::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Georama', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #000;
+    
+    .container {
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+
+        .section {
+            padding: 1rem 2rem;
+            height: 100svh;
+
+            &:last-child {
+                margin-bottom: 5%;
+            }
+
+            .section__header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 2rem 0;
+
+                h2 {
+                    font-size: 2.2rem;
+                    letter-spacing: 1px;
+                    color: #fafafa;
+                    font-family: 'Neue-Montreal-Medium';
+                }
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: .5rem;
+                    color: #fafafa;
+                    font-family: 'Neue-Montreal-Book';
+                }
+            }
+        }
+    }
+}
+
+// Media Queries
+@media screen and (max-width: 767px) {
+    body {
+        .container {
+            .section {
+                padding: 0 1rem;
+                height: auto;
+
+                .section__header {
+                    padding: 1rem 0 2rem;
+                    h2 {
+                        font-size: 1.5rem;
+                        letter-spacing: 1px;
+                    }
+
+                    a {
+                        font-size: .8rem;
+                    }
+                }
+            }
+        }
+    }
+}

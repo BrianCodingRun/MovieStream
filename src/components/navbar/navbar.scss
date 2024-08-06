@@ -1,0 +1,705 @@
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  z-index: 1001;
+
+  .navToggler {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: none;
+    background: transparent;
+
+    &.active {
+      .line.l1 {
+        transform: rotate(45deg);
+      }
+
+      .line.l2 {
+        transform: rotate(-45deg);
+      }
+    }
+
+    .line {
+      display: block;
+      width: 100%;
+      height: .1em;
+      background: #f1f1f1;
+      transition: transform .7s cubic-bezier(0.19, 1, 0.22, 1), opacity .3s cubic-bezier(0.19, 1, 0.22, 1);
+      position: absolute;
+    }
+
+    .line.l1 {
+      transform: translateY(-.3em);
+    }
+
+    .line.l2 {
+      transform: translateY(.3em);
+    }
+  }
+
+  .logo {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    flex-basis: 25%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+  }
+
+  .middle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    flex-basis: 50%;
+    position: relative;
+
+    .searchBar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      position: relative;
+
+      input {
+        width: 100%;
+        height: 100%;
+        padding: 1rem 1.5rem;
+        border: none;
+        background-color: #141414;
+        color: #fafafa;
+        font-size: 0.9rem;
+        font-family: 'Neue-Montreal-Book';
+        outline: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .5s cubic-bezier(0.19, 1, 0.22, 1);
+
+        &::placeholder {
+          letter-spacing: 0.02em;
+          font-family: 'Neue-Montreal-Book';
+          text-transform: uppercase;
+          font-size: .7rem;
+        }
+
+        &.active {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      .action {
+        position: absolute;
+        top: 50%;
+        right: .5rem;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .search {
+          background: transparent;
+          border: none;
+          color: #e4e4e4;
+          font-size: 1.4rem;
+          cursor: pointer;
+        }
+
+        hr {
+          border: none;
+          width: 1px;
+          height: 15px;
+          background-color: #202020;
+        }
+  
+        .microphone {
+          background: transparent;
+          border: none;
+          color: #e4e4e4;
+          font-size: 1.4rem;
+          cursor: pointer;
+  
+          svg {
+            font-size: 1.2rem;
+            color: #e4e4e4;
+          }
+        }
+      }
+    }
+
+    .searchResult {
+      border-top: .1rem solid #202020;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #141414;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      padding: .5rem 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .5s cubic-bezier(0.19, 1, 0.22, 1);
+
+      &.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .headerSearch {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: .5rem 1rem;
+
+        h4 {
+          font-size: .9rem;
+          letter-spacing: 1px;
+          color: #8a8a8a;
+          font-family: 'Neue-Montreal-Book';
+          font-weight: normal;
+
+          span {
+            color: #e4e4e4;
+            letter-spacing: 0.02em;
+          }
+        }
+      }
+
+      .searchResultScroll {
+        max-height: 60svh;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+          width: 0.5rem;
+        }
+  
+        &::-webkit-scrollbar-thumb {
+          background-color: #202020;
+        }
+
+        .searchResultItem.noResult {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 200px;
+          cursor: default;
+          
+          h4 {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: #8a8a8a;
+            font-family: 'Neue-Montreal-Book';
+            font-weight: normal;
+            background-color: #1e1e1e;
+            padding: 0.5rem 1rem;
+          }
+        }
+
+        .searchResultItem {
+          display: flex;
+          gap: 1rem;
+          padding: 1rem;
+          border-radius: 4px;
+          cursor: pointer;
+          position: relative;
+        
+          &:not(:last-child) {
+            border-bottom: .1rem solid #202020;
+          }
+
+          &:hover:not(.noResult) {
+            background-color: #1e1e1e;
+          }
+
+          a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+
+            span {
+              visibility: hidden;
+              opacity: 0;
+            }
+          }
+
+          .searchResultCardLeft {
+            width: 200px;
+            height: 120px;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .searchResultCardRight {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            h3 {
+              font-size: 1rem;
+              font-family: 'Neue-Montreal-Book';
+              letter-spacing: 0.05em;
+              color: #fafafa;
+              font-weight: 400;
+              text-transform: capitalize;
+            }
+
+            .genres {
+              display: flex;
+              gap: 0.5rem;
+              
+              span {
+                font-size: 0.8rem;
+                color: #8a8a8a;
+                letter-spacing: 0.02em;
+                font-family: 'Neue-Montreal-Book';
+                text-transform: capitalize;
+              }
+            }
+
+            .releaseDate {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              font-size: 0.8rem;
+              color: #e4e4e4;
+              font-family: 'Neue-Montreal-Book';
+              text-transform: uppercase;
+              letter-spacing: 0.02em;
+
+              span {
+                font-size: 0.8rem;
+                letter-spacing: 0.02em;
+                font-family: 'Neue-Montreal-Book';
+                text-transform: uppercase;
+              }
+            }
+          }
+        }
+      }
+
+      .footerSearch {
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+
+        a {
+          font-size: .9rem;
+          letter-spacing: 1px;
+          color: #8a8a8a;
+          font-family: 'Neue-Montreal-Book';
+          font-weight: normal;
+          background-color: #1e1e1e;
+          padding: 0.5rem 1rem;
+
+          h4 span {
+            color: #e4e4e4;
+            letter-spacing: 0.02em;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+
+  .rightContent {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-basis: 25%;
+
+    hr {
+      border: none;
+      display: inline-block;
+      width: 0.05em;
+      height: 15px;
+      background-color: #1e1e1e;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+
+      li.searchBox {
+        display: none;
+      }
+
+      li:not(li.searchBox) {
+        &::after {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 1px;
+          background-color: #fafafa;
+          transform: scaleX(0);
+          transform-origin: right;
+          transition: transform .5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        &:hover::after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+
+        &.active {
+          &::after {
+            transform: scaleX(1);
+            transform-origin: left;
+          }
+        }
+
+        a {
+          font-family: 'Neue-Montreal-Book';
+          font-size: .8rem;
+          color: #fafafa;
+          text-transform: uppercase;
+          letter-spacing: 0.02em;
+        }
+      }
+    }
+    
+    .watchlist a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #e4e4e4;
+      font-family: 'Neue-Montreal-Book';
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+
+      svg {
+        font-size: 1.2rem;
+        color: #e4e4e4;
+      }
+
+      span {
+        font-size: 0.8rem;
+        letter-spacing: 0.02em;
+        font-family: 'Neue-Montreal-Book';
+        text-transform: uppercase;
+      }
+    }
+  }
+  
+  .searchBoxWrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 95svh;
+    background-color: #000;
+    border: 2px solid #202020;
+    border-radius: 4px;
+    z-index: 1001;
+    display: none;
+
+    .headerSearch {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+      padding: 1rem;
+
+      input {
+        width: 100%;
+        height: 100%;
+        padding: 1rem 1.5rem;
+        border: 2px solid #141414;
+        border-radius: 4px;
+        background-color: transparent;
+        color: #fafafa;
+        font-size: 0.9rem;
+        font-family: 'Neue-Montreal-Book';
+        outline: none;
+      }
+
+      button {
+        position: absolute;
+        color: #e4e4e4;
+        background-color: transparent;
+        border: none;
+        font-size: 1.2rem;
+
+        svg {
+          color: #8a8a8a;
+        }
+
+        &.search {
+          position: absolute;
+          top: 50%;
+          right: 2rem;
+          transform: translateY(-50%);
+        }
+  
+        &.microphone {
+          top: 50%;
+          right: 4rem;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+    hr {
+      border: none;
+      width: 100%;
+      height: 1px;
+      background-color: #202020;
+    }
+
+    .searchWrapperResult {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      height: 70svh;
+      overflow-y: auto;
+
+      .searchWrapperResultItem.noResult {
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        cursor: default;
+        
+        h4 {
+          font-size: 1rem;
+          letter-spacing: 1px;
+          text-align: center;
+          color: #8a8a8a;
+          font-family: 'Neue-Montreal-Book';
+          font-weight: normal;
+          background-color: #1e1e1e;
+          padding: 0.5rem 1rem;
+        }
+      }
+
+      .searchWrapperResultItem {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        cursor: pointer;
+        position: relative;
+
+        &:not(:last-child) {
+          border-bottom: .1rem solid #202020;
+        }
+
+        &:hover:not(.noResult) {
+          background-color: #1e1e1e;
+        }
+
+        .searchWrapperResultItemLeft {
+          width: 100px;
+          height: 150px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .searchWrapperResultItemRight {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          h3 {
+            font-size: 1rem;
+            font-family: 'Neue-Montreal-Book';
+            letter-spacing: 0.05em;
+            color: #fafafa;
+            font-weight: 400;
+            text-transform: capitalize;
+          }
+
+          .genres {
+            display: flex;
+            gap: 0.5rem;
+            
+            span {
+              font-size: 0.8rem;
+              color: #8a8a8a;
+              letter-spacing: 0.02em;
+              font-family: 'Neue-Montreal-Book';
+              text-transform: capitalize;
+            }
+          }
+
+          .releaseDate {
+            span {
+              font-size: 0.8rem;
+              letter-spacing: 0.02em;
+              font-family: 'Neue-Montreal-Book';
+              text-transform: uppercase;
+              color: #fafafa;
+            }
+          }
+        }
+      }
+    }
+    .footerSearch {
+      padding: 1.2rem 1rem;
+
+      a {
+        font-size: .9rem;
+        letter-spacing: 1px;
+        color: #8a8a8a;
+        font-family: 'Neue-Montreal-Book';
+        font-weight: normal;
+        background-color: #1e1e1e;
+
+        h4 span {
+          color: #e4e4e4;
+          letter-spacing: 0.02em;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}
+
+/* Media Queries */
+
+@media screen and (max-width:767px){
+  nav {
+    padding: .5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .navToggler {
+      display: flex;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      flex-basis: 40px;
+    }
+
+    .middle {
+      display: none;    
+    }
+
+    hr {
+      width: 0.05em;
+      height: 10px;
+    }
+
+    .rightContent {
+      justify-content: flex-end;
+      flex-basis: 40px;
+
+      hr {
+        display: none;
+      }
+
+      .nav-links {
+        position: absolute;
+        height: 0;
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+        padding: 3rem 1rem;
+        background-color: #000;
+        border-top: 1px solid #202020;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        transform: translateY(-100%);
+        transition: transform .5s cubic-bezier(0.19, 1, 0.22, 1);
+        z-index: -1;
+
+        &.active {
+          transform: translateY(0);
+
+          li {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+
+        li.searchBox {
+          display: block;
+          width: 100%;
+
+          button {
+            background: transparent;
+            border: 1px solid #b0afaf;
+            width: 100%;
+            color: #b0afaf;
+            font-size: .9rem;
+            padding: 0.5rem 1rem;
+            font-family: 'Neue-Montreal-Book';
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            svg {
+              font-size: 1.2rem;
+            }
+          }
+        }
+
+        li {
+          visibility: hidden;
+          opacity: 0;
+          transition: opacity .5s .2s cubic-bezier(0.19, 1, 0.22, 1);
+
+          &::after {
+            display: none;
+          }
+        }
+      }
+
+      .watchlist {
+        display: none;
+      }
+    }
+
+    .searchBoxWrapper {
+      display: block;
+      &.close {
+        display: none;
+      }
+    }
+  }
+}

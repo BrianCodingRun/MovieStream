@@ -1,0 +1,108 @@
+.bannerCookies {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1002;
+    padding: 2rem 1rem;
+
+    @media screen and (max-width: 767px) {
+        padding: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    .bannerContainer {
+        width: 500px;
+        height: 250px;
+        background-color: #fff;
+        position: relative;
+        z-index: 101;
+
+        @media screen and (max-width: 767px) {
+            width: 100%;
+            height: auto;
+        }
+
+        .close {
+            position: absolute;
+            top: -1rem;
+            right: -1rem;
+            cursor: pointer;
+            background: #000;
+            border: 1px solid #f1f1f1;
+            border-radius: initial;
+            padding: 0.5rem;
+
+            @media screen and (max-width: 767px) {
+                top: 0;
+                right: 0;
+                border: none;
+            }
+
+            &:hover {
+                opacity: initial;
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+                color: #fff;
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem;
+            color: #000;
+
+            h2 {
+                font-size: 1.2rem;
+                font-family: 'Neue-Montreal-Bold';
+                text-align: center;
+                
+                @media screen and (max-width: 767px) {
+                    font-size: 1rem;
+                    text-align: left;
+                }
+            }
+
+            p {
+                font-size: 0.9rem;
+                font-family: 'Neue-Montreal-Book';
+
+                @media screen and (max-width: 767px) {
+                    font-size: 0.8rem;
+                }
+            }
+
+            .consentActions {
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
+
+                button {
+                    border: none;
+                    border-radius: initial;
+                    padding: 0.5rem 1rem;
+                    width: 100%;
+                    font-size: 0.8rem;
+                    font-family: 'Neue-Montreal-Thin';
+                    cursor: pointer;
+
+                    &.accept {
+                        background-color: #000;
+                        color: #fff;
+                    }
+
+                    &.decline {
+                        border: 1px solid #000;
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+}

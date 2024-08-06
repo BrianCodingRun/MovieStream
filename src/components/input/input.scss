@@ -1,0 +1,14 @@
+input {
+    padding: 1rem 3rem 1rem 1.5rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fafafa;
+    font-family: 'Neue-Montreal-Book';
+    font-size: 1rem;
+
+    &::placeholder {
+      color: #e4e4e4;
+    }
+}

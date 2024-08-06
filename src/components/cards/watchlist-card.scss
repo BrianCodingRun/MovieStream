@@ -1,0 +1,143 @@
+.watchlistCard {
+    width: 290px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    
+    .watchlistCardBg {
+        width: 100%;
+        position: relative;
+
+        &:hover {
+            &::after, .watchlistCardAction {
+                opacity: 1;
+            }
+        }
+    
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15,15,15, 0.5);
+            opacity: 0;
+            transition: opacity .7s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .watchlistCardAction {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0;
+            transition: opacity .7s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: 1;
+
+            button {
+                background-color: rgb(29, 29, 29);
+                border: none;
+                border-radius: 50%;
+                padding: .5rem;
+                cursor: pointer;
+                
+                svg {
+                    fill: #f1f1f1;
+                }
+            }
+        }
+    }
+
+    .watchlistCardContent {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        p.watchlistCardReleaseDate {
+            font-size: 12px;
+            color: #9CA3AF;
+            font-weight: 400;
+            font-family: 'Neue-Montreal-Book';
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-family: 'Neue-Montreal-Bold';
+            font-weight: normal;
+
+            a {
+                color: #fff;
+
+                &:hover {text-decoration: underline;}
+            }
+        }
+
+        .watchlistCardRating {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+
+            .watchlistCardRatingLeft {
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+
+                img {
+                    width: 30px;
+                    height: 15px;
+                    object-fit: cover;
+                }
+
+                span {
+                    font-size: .8rem;
+                    color: #fff;
+                    font-weight: 400;
+                    font-family: 'Neue-Montreal-Book';
+                }
+            }
+
+            .watchlistCardRatingRight {
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+
+                span {
+                    font-size: .8rem;
+                    color: #fff;
+                    font-weight: 400;
+                    font-family: 'Neue-Montreal-Book';
+                }
+            }
+        }
+
+        .watchlistCardGenres {
+            display: flex;
+            gap: .5rem;
+
+            span {
+                font-size: .8rem;
+                color: #9CA3AF;
+                font-weight: 400;
+                font-family: 'Neue-Montreal-Book';
+            }
+        }
+    }
+}
+
+// Media Queries
+@media only screen and (max-width: 767px) {
+    .watchlistCard {
+        width: 260px;
+        .watchlistCardContent {
+            h3 {
+                font-size: 1rem;
+            }
+        }
+    }
+}
